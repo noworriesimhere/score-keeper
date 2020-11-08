@@ -11,17 +11,19 @@
   </head>
   <body>
       <div class="container">
-          <div class="card column is-half is-offset-one-quarter">
+          <div class="card column is-half is-offset-one-quarter mt-6 has-text-centered">
               <div class="card-content">
                 <h1 class="title">Score Keeper</h1>
                 <p class="subtitle">Remind your opponent who's boss</p>
                 <div class="content">
                   <main class="columns is-mobile">
                     <div class="column">
-                        <p id="playerOneScore">0</p>
+                        <p id="playerOneScore" class="is-size-1 has-text-weight-bold mb-0">0</p>
+                        <p id="playerOneName"></p>
                     </div>
                     <div class="column">
-                        <p id="playerTwoScore">0</p>
+                        <p id="playerTwoScore" class="is-size-1 has-text-weight-bold mb-0">0</p>
+                        <p id="playerTwoName"></p>
                     </div>
                 </main>
                 </div>
@@ -32,8 +34,8 @@
               </div>
               </div>
               <footer class="card-footer">
-                <a href="#" class="card-footer-item" id="upPoint1">+1 for Player One!</a>
-                <a href="#" class="card-footer-item" id="upPoint2">+1 for Player Two!</a>
+                <a href="#" class="card-footer-item" id="upPoint1"></a>
+                <a href="#" class="card-footer-item" id="upPoint2"></a>
                 <a href="#" class="card-footer-item" id="reset">Reset</a>
               </footer>
             </div>
