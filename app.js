@@ -1,53 +1,54 @@
-let score1 = 0;
-let score2 = 0;
-let goal = 5;
-
-const scoreSelector = document.querySelector("#scoreSelector")
-const upPoint1 = document.querySelector("#upPoint1")
-const upPoint2 = document.querySelector("#upPoint2")
-const displayScore1 = document.querySelector("#playerOneScore")
-const displayScore2 = document.querySelector("#playerTwoScore")
-const reset = document.querySelector("#reset")
-
-
-function gameOver() {
-    upPoint1.disabled = true;
-    upPoint2.disabled = true;
+const player1 = {
+    addPoint: document.querySelector("#upPoint1"),
+    currentScore: 0,
+    displayScore: document.querySelector("#playerOneScore"),
+    roundsWon: 0
 }
 
+const player2 = {
+    addPoint: document.querySelector("#upPoint2"),
+    currentScore: 0,
+    displayScore: document.querySelector("#playerTwoScore"),
+    roundsWon: 0
+}
+let isGameOver = false;
+let playTo = 5;
+const resetButton = document.querySelector("#reset")
+
+function pointIncrease(player, opponent) {
+    if (!isGameOver) {
+        player.currentScore++;
+        player.displayScore.textContent = player.currentScore;
+        if(player.currentScore == playTo) {
+            player.displayScore.classList.toggle("won");
+            opponent.displayScore.classList.toggle("lost");
+            isGameOver = true;
+        }
+    }
+}
+
+function resetGame() {
+    for (let player of [player1, player2]) {
+        player.currentScore = 0;
+        player.displayScore.textContent = player.currentScore;
+        player.displayScore.classList.remove("won", "lost");
+        isGameOver = false;
+    }
+}
+
+player1.addPoint.addEventListener("click", () => {
+    pointIncrease(player1, player2);
+})
+
+player2.addPoint.addEventListener("click", () => {
+    pointIncrease(player2, player1);
+})
+
 scoreSelector.addEventListener("input", (e) => {
-    goal = parseInt(e.target.value);
+    playTo = parseInt(e.target.value);
+    resetGame();
 })
 
-upPoint1.addEventListener("click", () => {
-    score1++;
-    displayScore1.innerHTML = score1;
-    if (score1 === goal) {
-        displayScore1.classList.toggle("won")
-        displayScore2.classList.toggle("lost")
-        gameOver();
-    }
-})
-
-upPoint2.addEventListener("click", () => {
-    score2++;
-    displayScore2.innerHTML = score2;
-    if (score2 === goal) {
-        displayScore1.classList.toggle("lost")
-        displayScore2.classList.toggle("won")
-        gameOver();
-    }
-})
-
-reset.addEventListener("click", () => {
-    score1 = 0;
-    score2 = 0;
-    displayScore1.innerHTML = score1;
-    displayScore2.innerHTML = score2;
-    displayScore1.classList.remove("won")
-    displayScore1.classList.remove("lost")
-    displayScore2.classList.remove("won")
-    displayScore2.classList.remove("lost")
-    upPoint1.disabled = false;
-    upPoint2.disabled = false;
+resetButton.addEventListener("click", () => {
+    resetGame();
 })

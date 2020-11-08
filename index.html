@@ -10,31 +10,34 @@
     <!-- <link rel="stylesheet" href="styles/debug.css"> -->
   </head>
   <body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">Score Keeper</h1>
-      <p class="subtitle">Remind your opponent who's boss</p>
-      
-      
-    </div>
-    <main class="columns is-mobile">
-        <div class="score column">
-            <h2 id="playerOneScore">0</h2>
-        </div>
-        <div class="score column">
-            <h2 id="playerTwoScore">0</h2>
-        </div>
-    </main>
-    <div>
-        <h3>Keep Track of Who's Better</h3>
-        <label for="scoreSelector">Playing To:</label>
-        <input type="number" id="scoreSelector" min="1" max="100" value="5">
-    </div>
-    <div>
-        <button id="upPoint1">+1 for Player One!</button>
-        <button id="upPoint2">+1 for Player Two!</button>
-        <button id="reset">Reset</button>
-    </div>
+      <div class="container">
+          <div class="card column is-half is-offset-one-quarter">
+              <div class="card-content">
+                <h1 class="title">Score Keeper</h1>
+                <p class="subtitle">Remind your opponent who's boss</p>
+                <div class="content">
+                  <main class="columns is-mobile">
+                    <div class="column">
+                        <p id="playerOneScore">0</p>
+                    </div>
+                    <div class="column">
+                        <p id="playerTwoScore">0</p>
+                    </div>
+                </main>
+                </div>
+                <div>
+                  <h3>Keep Track of Who's Better</h3>
+                  <label for="scoreSelector">Playing To:</label>
+                  <input type="number" id="scoreSelector" min="1" max="100" value="5">
+              </div>
+              </div>
+              <footer class="card-footer">
+                <a href="#" class="card-footer-item" id="upPoint1">+1 for Player One!</a>
+                <a href="#" class="card-footer-item" id="upPoint2">+1 for Player Two!</a>
+                <a href="#" class="card-footer-item" id="reset">Reset</a>
+              </footer>
+            </div>
+      </div>
   </section>
   <script src="app.js"></script>
   </body>
