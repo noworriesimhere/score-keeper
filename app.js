@@ -39,12 +39,26 @@ function pointIncrease(player, opponent) {
     }
 }
 
+const messages = [
+    "Show your opponent who's boss",
+    "Well, you can try again!",
+    "Still not winning huh?",
+    "You are persistent!",
+    "I can't believe you're still playing",
+    "I'm taking a break, you can keep playing"
+]
+
+let messageCounter = 1;
+
 function resetGame() {
+    if(messageCounter < 5) {
+        messageCounter++;
+    }
     for (let player of [player1, player2]) {
         player.currentScore = 0;
         player.displayScore.textContent = player.currentScore;
         player.displayScore.classList.remove("won", "lost");
-        subtitle.textContent = "Okay, let's try this again";
+        subtitle.textContent = messages[messageCounter]
         isGameOver = false;
     }
 }
